@@ -1,24 +1,16 @@
-name: My First Workflow
+name: Environment Variables
 
 on:
-  push:
+  push
 
 jobs:
-  copy:
+  demo:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Copy Repository
-        uses: actions/checkout@v4
-      
-      - name: Listing
-        run: ls
+       - run: |
 
-  list:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: List files
-        run: ls
-
+           echo "Hello ${{vars.Name}}, how are you.."
+           echo "I am ${{vars.age}} years old"
+           echo "My password is ${{secrets.pass}}"
 
