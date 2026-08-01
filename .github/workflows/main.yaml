@@ -1,36 +1,13 @@
----
-name: "Simple Script for Github Actions WorkFlow"
+name: My First Workflow
+
 on:
   push:
-    branches:
-      - master
-      - main
+
 jobs:
-
-  image-build-job:
-
+  hello:
     runs-on: ubuntu-latest
-
     steps:
+      - name: Print Message
+        run: echo "Hello GitHub Actions!"
 
-      - name: "Date Command"
-        run: date
-
-      - name: "Os Details"
-        run: cat /etc/os-release
-
-      - name: "Memory Details"
-        run: free -m
-
-      - name: "Current working directory and its contents"
-        run: |
-          pwd
-          ls -la
-
-      - name: "Installing Packer"
-        run: | 
-          wget https://releases.hashicorp.com/packer/1.14.2/packer_1.14.2_linux_amd64.zip
-          unzip packer_1.14.2_linux_amd64.zip
-          pwd
-          ls -la
 
