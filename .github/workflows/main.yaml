@@ -4,10 +4,21 @@ on:
   push:
 
 jobs:
-  hello:
+  copy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Print Message
-        run: echo "Hello GitHub Actions!"
+      - name: Copy Repository
+        uses: actions/checkout@v4
+      
+      - name: Listing
+        run: ls
+
+  list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: List files
+        run: ls
 
 
