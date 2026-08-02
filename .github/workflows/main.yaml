@@ -1,16 +1,34 @@
-name: Environment Variables
+name: Learning Artifacts
 
 on:
-  push
+  push:
 
 jobs:
-  demo:
+
+  upload:
     runs-on: ubuntu-latest
 
     steps:
-       - run: |
+      - run: |
+          mkdir output
+          echo "Hello from runner-1" >> output/text.txt
+      
+      - uses: actions/upload-artifact@v7
+        with:
+          name: my-artifact
+          path: output/
 
-           echo "Hello ${{vars.Name}}, how are you.."
-           echo "I am ${{vars.age}} years old"
-           echo "My password is ${{secrets.pass}}"
+  download:
+    needs: upload
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          name: my-artifact
+          path: output/
+          
+      - run: cat output/text.txt
+
+
 
