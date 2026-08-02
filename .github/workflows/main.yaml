@@ -26,4 +26,23 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: ajin1998/app:newimg
+          tags: ajin1998/app:latest
+   
+  deploy:
+     runs-on: ubuntu-latest
+     needs: docker
+     
+     steps:
+      - name: Multiple commands
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+
+            docker pull ajin1998/app:newimg
+            docker run -d --name demo-app -p 80:8000 ajin1998/app:newimg
+
+
