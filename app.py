@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return jsonify({"message": "App is running!"})
+    return jsonify({"message": "App2 is running!"})
 
 @app.route("/db")
 def db_check():
@@ -27,4 +27,4 @@ def external():
     return jsonify({"external_status": res.status_code})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=8000)
