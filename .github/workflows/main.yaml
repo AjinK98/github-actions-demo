@@ -5,7 +5,7 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v7
@@ -29,7 +29,7 @@ jobs:
           tags: ajin1998/app:newimg2
    
   deploy:
-     runs-on: ubuntu-latest
+     runs-on: self-hosted
      needs: docker
 
      steps:
