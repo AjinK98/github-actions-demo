@@ -9,15 +9,13 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v7
-
-      - name: Execute remote SSH commands using password
-        uses: appleboy/ssh-action@v1
+      - uses: actions/checkout@v4
+      - name: Copy files via SSH
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: |
-            rsync -av --delete ./index.html /var/www/html/
-
+          source: "index.html"
+          target: /var/www/html/
